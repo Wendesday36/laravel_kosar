@@ -21,8 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::middleware('auth.basic')->group(function () {
-    Route::get('ItemwithB', [BasketController::class, 'ItemwithB']);
-    Route::post('AddItem/{item_id}', [BasketController::class, 'AddItem']);
+    Route::get('itemwith_b', [BasketController::class, 'itemwithB']);
+    Route::post('additem/{item_id}', [BasketController::class, 'addItem']);
     
 });
 

@@ -59,9 +59,6 @@ class BasketController extends Controller
         return $basketItem->save();
     }
     //4es feladat
-    public function basketAuthUser()
-    {
-        return Basket::with('user_basket')->where('user_id', '=', Auth::user()->id)->get();
-    }
+    
   
 }

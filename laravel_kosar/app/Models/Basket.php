@@ -12,9 +12,7 @@ class Basket extends Model
         'user_id',
         'item_id',
     ];
-    public function user_basket(){
-        return $this->belongsTo(Product::class, 'item_id','item_id');
-    }
+    
     protected function setKeysForSaveQuery($query)
     {
 
