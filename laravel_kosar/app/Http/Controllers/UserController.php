@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -38,4 +39,16 @@ class UserController extends Controller
     public function destroy($id){
         User::find($id)->delete();
     }
+    public function showProductsById($userId, $tipus){
+        $products = DB::table('baskets')
+            ->join('products', 'baskets.item_id', '=', 'products.item_id')
+            ->join('product_types', 'products.type_id', '=', 'product_types.type_id')
+            ->where('baskets.user_id', $userId)
+            ->where('product_types.name', $tipus)
+            ->select('baskets.*')
+            ->get();
+    
+        return response()->json($products);
+    }
+
 }

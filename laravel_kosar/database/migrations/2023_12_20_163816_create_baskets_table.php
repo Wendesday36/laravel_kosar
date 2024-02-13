@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Basket;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,6 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        
         Schema::create('baskets', function (Blueprint $table) {
             //a primary... nem hozza létre a mezőket...
             $table->primary(['user_id', 'item_id']);
@@ -18,6 +20,32 @@ return new class extends Migration
             $table->foreignId('item_id')->references('item_id')->on('products');
             $table->timestamps();
         });
+        Basket::create([
+            'user_id' => 1, 
+            'item_id' => 3, 
+            
+        ]);
+        Basket::create([
+            'user_id' => 2, 
+            'item_id' => 1, 
+            
+        ]);
+        Basket::create([
+            'user_id' => 2, 
+            'item_id' => 3, 
+            
+        ]);
+
+        Basket::create([
+            'user_id' => 3, 
+            'item_id' => 3, 
+            
+        ]);
+        Basket::create([
+            'user_id' => 2, 
+            'item_id' => 4, 
+            
+        ]);
     }
 
     /**

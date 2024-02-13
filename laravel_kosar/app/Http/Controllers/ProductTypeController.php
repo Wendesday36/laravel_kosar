@@ -38,4 +38,9 @@ class ProductTypeController extends Controller
     public function destroy($id){
         ProductType::find($id)->delete();
     }
+     //elso feladat:
+    public function AllProduct($id)
+    {
+        return ProductType::with('product_types')->where('type_id', '=', $id)->get();
+    }
 }
